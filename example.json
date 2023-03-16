@@ -1,4 +1,39 @@
-{
-  "domain":"bbc.com"
-
-}
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "condition": {
+      "urlFilter": "example.com",
+      "resourceTypes": ["main_frame"],
+      "domains": ["*"],
+      "isUrlFilterCaseSensitive": false
+    },
+    "action": {
+      "type": "redirect",
+      "redirect": { "url": "https://native-redirect.example.com" }
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "condition": {
+      "urlFilter": "example.org",
+      "resourceTypes": ["main_frame"],
+      "domains": ["*"],
+      "isUrlFilterCaseSensitive": false
+    },
+    "action": {
+      "type": "modifyUrl",
+      "urlTransform": {
+        "queryTransform": {
+          "addOrReplaceParams": [
+            {
+              "key": "url",
+              "value": "https://rbi-redirect.example.org"
+            }
+          ]
+        }
+      }
+    }
+  }
+]
